@@ -36,8 +36,7 @@ public class ImageHide {
         }
         this.fileLocation=fileLocation;
         BufferedImage bufferedImage = null;
-        String suffix = fileLocation.substring(fileLocation.lastIndexOf(".") + 1);
-        if(!("png").equals(suffix.toLowerCase())){
+        if(!ImageUtil.validPng(fileLocation)){
             //JPEG是有损格式,保存JPEG并重新加载后颜色将不会完全相同，GIF比较复杂暂不考虑
             throw new RuntimeException("目前仅支持PNG格式");
         }
@@ -175,6 +174,9 @@ public class ImageHide {
     public String ImageExtract(String fileLocation) {
         if(fileLocation==null ||fileLocation.equals("")){
             throw new RuntimeException("要提取文字的文件名不能为空");
+        }
+        if(!ImageUtil.validPng(fileLocation)){
+            throw new RuntimeException("目前仅支持PNG格式");
         }
         StringBuilder binStr = new StringBuilder();
         StringBuilder lenBinStr = new StringBuilder(15);
