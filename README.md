@@ -6,4 +6,17 @@
 ```
 java -jar hideImage-1.0-SNAPSHOT.jar
 ```
+原图：
+
+![原图][1]
+
+处理后图片:
+
+![处理后图片][2]
+
+隐藏文字：组织上已经决定了，今天的垃圾都归你
+------
+
+  [1]: ./static/yaofan.png
+  [2]: ./static/yaofan_hide.png
 
