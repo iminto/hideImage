@@ -3,6 +3,7 @@ package tony;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -70,6 +71,17 @@ public class ImageHide {
             System.out.println("允许处理的最大字节数是："+enabled+",你目前的字节数是:"+binStrLength/8);
         }
         return binStr;
+    }
+
+    private String addFile(String file){
+        try {
+            String content = new Scanner(new File(file)).useDelimiter("\\Z").next();
+            return content;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public void Hide() {
@@ -253,10 +265,10 @@ public class ImageHide {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("请选择操作，要隐藏文字请输入1,提取文字输入2");
+        System.out.println("请选择操作：1.隐藏文字 2.隱藏文本 3.提取文字");
         String option=in.nextLine();
-        if(option==null||(!option.equals("1") && !option.equals("2"))){
-            System.out.println("输入错误");
+        if(option==null||(!option.equals("1") && !option.equals("2") && !option.equals("3"))){
+            System.out.println("输入错误 请输入数字1-3");
             System.exit(-1);
         }
         if(option.equals("1")) {
@@ -266,6 +278,16 @@ public class ImageHide {
             rc.addPng(png);
             System.out.println("输入要隐藏的文本文件,当前图片最大支持" + rc.getEnabled() + "字节");
             rc.addText(in.nextLine());
+            rc.Hide();
+            System.out.println("隐写文件已生成，文件地址："+rc.getNewFileName());
+        }else if(option.equals("2")){
+            System.out.println("输入png图片地址");
+            String png = in.nextLine();
+            ImageHide rc = new ImageHide();
+            rc.addPng(png);
+            System.out.println("输入要隐藏的文本文件绝对路径,当前图片最大支持" + rc.getEnabled() + "字节");
+            String addText=rc.addFile(in.nextLine());
+            rc.addText(addText);
             rc.Hide();
             System.out.println("隐写文件已生成，文件地址："+rc.getNewFileName());
         }else{
