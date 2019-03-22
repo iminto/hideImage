@@ -68,7 +68,8 @@ public class ImageHide {
         this.binStr=binStr;
         int binStrLength=binStr.length();
         if(binStrLength>=this.enabled*8){
-            System.out.println("允许处理的最大字节数是："+enabled+",你目前的字节数是:"+binStrLength/8);
+            //如果输入的字数太多，不报错，但是提示会丢失数据
+            System.out.println("允许处理的最大字节数是："+enabled+",你目前的字节数是:"+binStrLength/8+"，继续操作会导致丢失一部分数据");
         }
         return binStr;
     }
