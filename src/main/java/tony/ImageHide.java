@@ -15,7 +15,7 @@ import java.util.Scanner;
  **/
 public class ImageHide {
 
-    private int enabled=0;//可处理的最大字节数
+    public int enabled=0;//可处理的最大字节数
 
     private String fileLocation="";//图片地址
 
@@ -31,7 +31,7 @@ public class ImageHide {
 
     private String findStr="";
 
-    private BufferedImage addPng(String fileLocation){
+    protected BufferedImage addPng(String fileLocation){
         if(fileLocation==null ||fileLocation.equals("")){
             throw new RuntimeException("文件名不能为空");
         }
@@ -58,7 +58,7 @@ public class ImageHide {
         return bufferedImage;
     }
 
-    private String addText(String hideStr){
+    protected String addText(String hideStr){
         if(hideStr==null ||hideStr.equals("")){
             throw new RuntimeException("要隐藏的文字不能为空");
         }
@@ -174,8 +174,8 @@ public class ImageHide {
             }
         }
         try {
-            String newFileName=this.fileLocation.substring(0,fileLocation.lastIndexOf("/"));
-            newFileName=newFileName+this.fileLocation.substring(fileLocation.lastIndexOf("/"),fileLocation.lastIndexOf("."));
+            String newFileName=this.fileLocation.substring(0,ImageUtil.isWin()?fileLocation.lastIndexOf("\\"):fileLocation.lastIndexOf("/"));
+            newFileName=newFileName+this.fileLocation.substring(ImageUtil.isWin()?fileLocation.lastIndexOf("\\"):fileLocation.lastIndexOf("/"),fileLocation.lastIndexOf("."));
             this.newFileName=newFileName+"_hide.png";
             ImageIO.write(bufferedImage, "png", new File(this.newFileName));
         } catch (IOException e) {

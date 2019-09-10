@@ -30,16 +30,19 @@ public class ImageUtil {
             return false;
         }finally {
             try {
-                fileInputStream.close();;
+                fileInputStream.close();
                 is.close();
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     }
-
-
-    public static void main(String[] args) throws IOException {
-        System.out.println(validPng("/home/qiezi/图片/yaofan.zip"));
+    
+    public static boolean isWin(){
+        String osName = System.getProperty("os.name");
+        return osName!=null && osName.startsWith("Windows");
+    }
+    
+    public static boolean isNotEmpty(String str){
+        return str!=null && !("").equals(str);
     }
 }
