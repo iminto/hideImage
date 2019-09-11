@@ -1,5 +1,6 @@
 package tony;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class AboutFrame extends javax.swing.JFrame {
@@ -49,6 +50,8 @@ public class AboutFrame extends javax.swing.JFrame {
                 aboutFrame.setVisible(true);
                 aboutFrame.setTitle("关于");
                 aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                ImageIcon icon = new ImageIcon("static/icon.png");
+                aboutFrame.setIconImage(icon.getImage());
             }
         });
     }

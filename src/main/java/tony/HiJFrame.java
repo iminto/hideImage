@@ -15,9 +15,11 @@ import javax.swing.JOptionPane;
 public class HiJFrame extends javax.swing.JFrame {
 
     private String imagePath;
+    private ImageHide rc;
 
     public HiJFrame() {
         initComponents();
+        rc = new ImageHide();
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +42,7 @@ public class HiJFrame extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
 
         hideText.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
@@ -181,9 +183,15 @@ public class HiJFrame extends javax.swing.JFrame {
         if (returnVal == pngChooser.APPROVE_OPTION) {
             File file = pngChooser.getSelectedFile();
             imagePath = file.getPath();
-            imgShowLabel.setIcon(new ImageIcon(file.getPath()));
-            long size = file.length();
-            statusLabel.setText("图片大小：" + size);
+            try {
+                rc.addPng(imagePath);
+                imgShowLabel.setIcon(new ImageIcon(file.getPath()));
+                long size = file.length();
+                int enable=rc.getEnabled();
+                statusLabel.setText("图片大小：" + size+"，可隐写字节数："+enable+"(1中文=3字节)");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "错误 ", 0);
+            }
         }
     }//GEN-LAST:event_imgOpenActionPerformed
 
@@ -199,9 +207,7 @@ public class HiJFrame extends javax.swing.JFrame {
         if (!ImageUtil.isNotEmpty(hideText.getText()) || !ImageUtil.isNotEmpty(imagePath)) {
             JOptionPane.showMessageDialog(this, "图片和文字不可为空！", "错误 ", 0);
         } else {
-            ImageHide rc = new ImageHide();
             try {
-                rc.addPng(imagePath);
                 rc.addText(hideText.getText());
                 rc.Hide();
                 JOptionPane.showMessageDialog(this, "隐写图片已生成至原目录中！", "成功 ", 1);
@@ -215,7 +221,6 @@ public class HiJFrame extends javax.swing.JFrame {
         if (!ImageUtil.isNotEmpty(imagePath)) {
             JOptionPane.showMessageDialog(this, "要提取的图片不可为空！", "错误 ", 0);
         } else {
-            ImageHide rc = new ImageHide();
             try {
                 String extractStr = rc.ImageExtract(imagePath);
                 hideText.setText(extractStr);
@@ -231,9 +236,11 @@ public class HiJFrame extends javax.swing.JFrame {
             public void run() {
                 HiJFrame jframe = new HiJFrame();
                 jframe.setVisible(true);
-                jframe.setTitle("Hide Image");
+                jframe.setTitle("图片隐写助手");
                 jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jframe.setLocationRelativeTo(null);
+                ImageIcon icon = new ImageIcon("static/icon.png");
+                jframe.setIconImage(icon.getImage());
             }
         });
     }

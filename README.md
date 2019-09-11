@@ -6,8 +6,12 @@
 
 运行方式
 ```
-java -jar hideImage-1.0-SNAPSHOT.jar
+java -jar  -Dfile.encoding=UTF-8  target/hideImage-1.0-SNAPSHOT.jar
 ```
+APP截图：
+
+![APP截图][3]
+
 原图：
 
 ![原图][1]
@@ -21,4 +25,5 @@ java -jar hideImage-1.0-SNAPSHOT.jar
 
   [1]: ./static/yaofan.png
   [2]: ./static/yaofan_hide.png
+  [3]: ./static/hide.png
 
