@@ -9,8 +9,5 @@
         <module name="hideImage" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="hideImage" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -6,11 +6,9 @@
 
     <groupId>tony</groupId>
     <artifactId>hideImage</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <version>1.0</version>
     <name>hideImage</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <url>https://github.com/iminto/hideImage</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +22,24 @@
     </dependencies>
 
     <build>
+        <finalName>hide</finalName>
+      <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+					<include>**/*.png</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
@@ -51,7 +67,6 @@
                         <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->  
                     </configuration>  
                 </plugin> 
-
             </plugins>
         </pluginManagement>
     </build>

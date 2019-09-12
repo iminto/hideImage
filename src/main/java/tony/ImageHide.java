@@ -17,7 +17,7 @@ public class ImageHide {
 
     public int enabled=0;//可处理的最大字节数
 
-    private String fileLocation="";//图片地址
+    public String fileLocation="";//图片地址
 
     private String hideStr;//要隐写的文字
 

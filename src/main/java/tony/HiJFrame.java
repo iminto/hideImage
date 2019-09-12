@@ -2,6 +2,7 @@ package tony;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
@@ -51,7 +52,7 @@ public class HiJFrame extends javax.swing.JFrame {
 
         hideBtn.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         hideBtn.setForeground(new java.awt.Color(0, 204, 204));
-        hideBtn.setLabel("隐藏");
+        hideBtn.setText("隐写");
         hideBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hideBtnActionPerformed(evt);
@@ -59,7 +60,7 @@ public class HiJFrame extends javax.swing.JFrame {
         });
 
         recBtn.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
-        recBtn.setLabel("提取");
+        recBtn.setText("提取");
         recBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recBtnActionPerformed(evt);
@@ -83,9 +84,9 @@ public class HiJFrame extends javax.swing.JFrame {
 
         fileMenuBar.setName("fileMenuBar"); // NOI18N
 
-        fileMenu.setLabel("文件");
+        fileMenu.setText("文件");
 
-        imgOpen.setLabel("选择图片");
+        imgOpen.setText("选择图片");
         imgOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imgOpenActionPerformed(evt);
@@ -93,7 +94,7 @@ public class HiJFrame extends javax.swing.JFrame {
         });
         fileMenu.add(imgOpen);
 
-        txtOpen.setLabel("选择文本文件");
+        txtOpen.setText("选择文本文件");
         txtOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtOpenActionPerformed(evt);
@@ -111,9 +112,9 @@ public class HiJFrame extends javax.swing.JFrame {
 
         fileMenuBar.add(fileMenu);
 
-        helpMenu.setLabel("帮助");
+        helpMenu.setText("帮助");
 
-        aboutMenuItem.setLabel("关于");
+        aboutMenuItem.setText("关于");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aboutMenuItemActionPerformed(evt);
@@ -211,6 +212,7 @@ public class HiJFrame extends javax.swing.JFrame {
                 rc.addText(hideText.getText());
                 rc.Hide();
                 JOptionPane.showMessageDialog(this, "隐写图片已生成至原目录中！", "成功 ", 1);
+                Logger.getLogger(HiJFrame.class.getName()).log(Level.INFO, "图片->"+rc.getFileLocation()+"隐写成功");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "错误 ", 0);
             }
@@ -239,7 +241,8 @@ public class HiJFrame extends javax.swing.JFrame {
                 jframe.setTitle("图片隐写助手");
                 jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jframe.setLocationRelativeTo(null);
-                ImageIcon icon = new ImageIcon("static/icon.png");
+                URL imUrl = getClass().getResource("/icon.png");
+                ImageIcon icon = new ImageIcon(imUrl);
                 jframe.setIconImage(icon.getImage());
             }
         });
@@ -250,7 +253,7 @@ public class HiJFrame extends javax.swing.JFrame {
             String content = new String(Files.readAllBytes(Paths.get(filePath)), "UTF-8");
             return content;
         } catch (IOException ex) {
-            Logger.getLogger(HiJFrame.class.getName()).log(Level.SEVERE, "读取文本文件内容出错", ex);
+            Logger.getLogger(HiJFrame.class.getName()).log(Level.WARNING, "读取文本文件内容出错", ex);
             return "";
         }
     }

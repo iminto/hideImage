@@ -25,17 +25,17 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="290" max="-2" attributes="0"/>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <Component id="jLabel1" pref="311" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="88" max="-2" attributes="0"/>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="150" max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,7 +46,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="&#x5b8b;&#x4f53;" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&#x672c;APP&#x53ef;&#x5b9e;&#x73b0;&#x56fe;&#x7247;&#x9690;&#x5199;&#x529f;&#x80fd;&#xff0c;&#x5c06;&#x6587;&#x672c;&#x5199;&#x5165;PNG&#x56fe;&#x7247;&#x4e2d;&#x4e14;&#x4e0d;&#x5f71;&#x54cd;&#x56fe;&#x7247;&#x6b63;&#x5e38;&#x4f7f;&#x7528;&#xff0c;&#x5e76;&#x4e14;&#x53ef;&#x4ee5;&#x968f;&#x65f6;&#x63d0;&#x53d6;&#x3002; &#xa;&lt;br&gt;&#x4f5c;&#x8005;&#xff1a;waitfox@qq.com&#xa;&lt;br&gt;&lt;a href=&quot;https://github.com/iminto/hideImage&quot;&gt;https://github.com/iminto/hideImage&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt;&#x672c;APP&#x53ef;&#x5b9e;&#x73b0;&#x56fe;&#x7247;&#x9690;&#x5199;&#x529f;&#x80fd;&#xff0c;&#x5c06;&#x6587;&#x672c;&#x5199;&#x5165;PNG&#x56fe;&#x7247;&#x4e2d;&#x4e14;&#x4e0d;&#x5f71;&#x54cd;&#x56fe;&#x7247;&#x6b63;&#x5e38;&#x4f7f;&#x7528;&#xff0c;&#x5e76;&#x4e14;&#x53ef;&#x4ee5;&#x968f;&#x65f6;&#x63d0;&#x53d6;&#x3002; &#xa;&lt;br&gt;&#x4f5c;&#x8005;&#xff1a;waitfox@qq.com&#xa;&lt;br&gt;&lt;a href=&quot;https://github.com/iminto/hideImage&quot;&gt;https://github.com/iminto/hideImage&lt;/a&gt;&#xa;&lt;br&gt;&#x5982;&#x679c;&#x4e2d;&#x6587;&#x7f16;&#x7801;&#x51fa;&#x9519;&#xff0c;&#x8bf7;&#x4f7f;&#x7528;java -jar -Dfile.encoding=UTF-8 hide.jar&#x5f62;&#x5f0f;&#x8fd0;&#x884c;&lt;/body&gt;&lt;/html&gt;"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
