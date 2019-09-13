@@ -23,9 +23,9 @@ public class ImageHide {
 
     private String binStr;
 
-    private int height;
+    public int height;
 
-    private int width;
+    public int width;
 
     private String newFileName="";
 

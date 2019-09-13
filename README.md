@@ -6,7 +6,7 @@
 
 运行方式
 ```
-java -jar  -Dfile.encoding=UTF-8  target/hideImage-1.0-SNAPSHOT.jar
+java -jar  -Dfile.encoding=UTF-8  target/hide.jar
 ```
 APP截图：
 

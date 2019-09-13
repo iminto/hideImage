@@ -68,7 +68,6 @@ public class HiJFrame extends javax.swing.JFrame {
         });
 
         statusBar.setToolTipText("");
-
         statusLabel.setToolTipText("");
 
         javax.swing.GroupLayout statusBarLayout = new javax.swing.GroupLayout(statusBar);
@@ -166,7 +165,7 @@ public class HiJFrame extends javax.swing.JFrame {
 
     private void txtOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOpenActionPerformed
         JFileChooser txtChooser = new JFileChooser();
-        txtChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        txtChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         txtChooser.setFileFilter(new TxtCanChoose());
         int returnVal = txtChooser.showDialog(new JLabel(), "选择");
         if (returnVal == txtChooser.APPROVE_OPTION) {
@@ -178,7 +177,7 @@ public class HiJFrame extends javax.swing.JFrame {
 
     private void imgOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imgOpenActionPerformed
         JFileChooser pngChooser = new JFileChooser();
-        pngChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        pngChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         pngChooser.setFileFilter(new ImgCanChoose());
         int returnVal = pngChooser.showDialog(new JLabel(), "选择");
         if (returnVal == pngChooser.APPROVE_OPTION) {
