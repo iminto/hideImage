@@ -10,6 +10,9 @@ public class AboutFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("关于");
+        URL imUrl = getClass().getResource("/icon.png");
+        ImageIcon icon = new ImageIcon(imUrl);
+        setIconImage(icon.getImage());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,9 +54,6 @@ public class AboutFrame extends javax.swing.JFrame {
                 aboutFrame.setVisible(true);
                 aboutFrame.setTitle("关于");
                 aboutFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                URL imUrl = getClass().getResource("/icon.png");
-                ImageIcon icon = new ImageIcon(imUrl);
-                aboutFrame.setIconImage(icon.getImage());
             }
         });
     }
