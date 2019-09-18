@@ -1,7 +1,7 @@
 package tony;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -9,7 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
 
 public class HiJFrame extends javax.swing.JFrame {
 
@@ -199,6 +198,7 @@ public class HiJFrame extends javax.swing.JFrame {
         if (returnVal == pngChooser.APPROVE_OPTION) {
             File file = pngChooser.getSelectedFile();
             imagePath = file.getPath();
+            String fileName=file.getName();
             try {
                 rc.addPng(imagePath);
                 imgShowLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -215,7 +215,7 @@ public class HiJFrame extends javax.swing.JFrame {
                 long size = file.length();
                 int enable=rc.getEnabled();
                 String imgSize=ImageUtil.formatFileSize(size);
-                statusLabel.setText("图片大小：" + imgSize+"，可隐写字节数："+ImageUtil.formatFileSize(enable));
+                statusLabel.setText("图片："+fileName+" 大小：" + imgSize+"，可隐写字节数："+ImageUtil.formatFileSize(enable));
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "错误 ", 0);
             }

@@ -7,12 +7,16 @@ public class TxtCanChoose extends FileFilter{
     @Override
     public boolean accept(File pathname) {
         String name=pathname.getName();
-        return name.toLowerCase().endsWith(".txt");
+        return name.toLowerCase().endsWith(".txt")||name.toLowerCase().endsWith(".java")||
+                name.toLowerCase().endsWith(".ini")||name.toLowerCase().endsWith(".properties")||
+                name.toLowerCase().endsWith(".md")||name.toLowerCase().endsWith(".yml")||
+                name.toLowerCase().endsWith(".html")||name.toLowerCase().endsWith(".htm")||
+                name.toLowerCase().endsWith(".xml")||name.toLowerCase().endsWith(".csv")||name.toLowerCase().endsWith(".sh");
     }
 
     @Override
     public String getDescription() {
-        return "*.txt文本";
+        return "*.文本";
     }
     
     
