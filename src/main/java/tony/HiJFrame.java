@@ -1,5 +1,7 @@
 package tony;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -7,20 +9,20 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class HiJFrame extends javax.swing.JFrame {
 
     private String imagePath;
     private ImageHide rc;
+    private ImageIcon icon;
 
     public HiJFrame() {
         initComponents();
         rc = new ImageHide();
+        URL imUrl = getClass().getResource("/icon.png");
+        icon = new ImageIcon(imUrl);
+        setIconImage(icon.getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -44,7 +46,6 @@ public class HiJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImages(null);
 
         hideText.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         hideText.setText("输入要隐写的内容或从文件菜单中加载本地文本文件");
@@ -164,7 +165,14 @@ public class HiJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOpenActionPerformed
-        JFileChooser txtChooser = new JFileChooser();
+        JFileChooser txtChooser = new JFileChooser(){
+            @Override
+            protected JDialog createDialog(Component parent ) throws HeadlessException {
+                JDialog dialog = super.createDialog( parent );
+                dialog.setIconImage(icon.getImage());
+                return dialog;
+            }
+        };;
         txtChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         txtChooser.setFileFilter(new TxtCanChoose());
         int returnVal = txtChooser.showDialog(new JLabel(), "选择");
@@ -176,7 +184,14 @@ public class HiJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtOpenActionPerformed
 
     private void imgOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imgOpenActionPerformed
-        JFileChooser pngChooser = new JFileChooser();
+        JFileChooser pngChooser = new JFileChooser(){
+            @Override
+            protected JDialog createDialog(Component parent ) throws HeadlessException {
+                JDialog dialog = super.createDialog(parent);
+                dialog.setIconImage( icon.getImage() );
+                return dialog;
+            }
+        };
         pngChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         pngChooser.setFileFilter(new ImgCanChoose());
         int returnVal = pngChooser.showDialog(new JLabel(), "选择");
@@ -185,7 +200,17 @@ public class HiJFrame extends javax.swing.JFrame {
             imagePath = file.getPath();
             try {
                 rc.addPng(imagePath);
-                imgShowLabel.setIcon(new ImageIcon(file.getPath()));
+                imgShowLabel.setHorizontalAlignment(JLabel.CENTER);
+                ImageIcon image = new ImageIcon(file.getPath());
+                //自适应缩放
+                if(rc.getWidth()>550||rc.getHeight()>200) {
+                    int[] size=ImageUtil.getAutoSize(rc.width,rc.height,550,200);
+                    Image img = image.getImage();
+                    img = img.getScaledInstance(size[0], size[1], Image.SCALE_DEFAULT);
+                    image.setImage(img);
+                }
+                imgShowLabel.setIcon(image);
+
                 long size = file.length();
                 int enable=rc.getEnabled();
                 String imgSize=ImageUtil.formatFileSize(size);
@@ -241,9 +266,6 @@ public class HiJFrame extends javax.swing.JFrame {
                 jframe.setTitle("图片隐写助手");
                 jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 jframe.setLocationRelativeTo(null);
-                URL imUrl = getClass().getResource("/icon.png");
-                ImageIcon icon = new ImageIcon(imUrl);
-                jframe.setIconImage(icon.getImage());
             }
         });
     }

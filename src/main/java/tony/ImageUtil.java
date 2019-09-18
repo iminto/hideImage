@@ -69,4 +69,36 @@ public class ImageUtil {
         }
         return hrSize;
     }
+
+    public static int[] getAutoSize(int width,int height,int maxWidth,int maxHeight){
+        if(width<=0 ||height<=0 ||maxHeight<=0 ||maxWidth<=0){
+            return new int[]{0,0};
+        }
+        if(width<=maxWidth && height<=maxHeight) {
+            int[] size = new int[]{width,height};
+            return size;
+        }else{
+            int newWidth=0;
+            int newHeight=0;
+            if(width>maxWidth && height>maxHeight){
+                double ratio=(double) maxWidth/width;
+                newWidth=Double.valueOf(width*ratio).intValue();
+                if(Double.valueOf(height*ratio).intValue()<maxHeight){
+                    newHeight=Double.valueOf(height*ratio).intValue();
+                }else{
+                    newHeight=maxHeight;
+                }
+            }else if(width>maxWidth){
+                newWidth=maxWidth;
+                double ratio=(double) maxWidth/width;
+                newHeight=Double.valueOf(height*ratio).intValue();
+            }else if(height>maxHeight){
+                newHeight=maxHeight;
+                double ratio=(double) maxHeight/height;
+                newWidth=Double.valueOf(width*ratio).intValue();
+            }
+            int[] size = new int[]{newWidth,newHeight};
+            return size;
+        }
+    }
 }
