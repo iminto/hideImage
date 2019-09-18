@@ -188,7 +188,8 @@ public class HiJFrame extends javax.swing.JFrame {
                 imgShowLabel.setIcon(new ImageIcon(file.getPath()));
                 long size = file.length();
                 int enable=rc.getEnabled();
-                statusLabel.setText("图片大小：" + size+"，可隐写字节数："+enable+"(1中文=3字节)");
+                String imgSize=ImageUtil.formatFileSize(size);
+                statusLabel.setText("图片大小：" + imgSize+"，可隐写字节数："+ImageUtil.formatFileSize(enable));
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "错误 ", 0);
             }
