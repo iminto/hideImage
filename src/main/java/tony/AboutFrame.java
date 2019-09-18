@@ -13,6 +13,7 @@ public class AboutFrame extends javax.swing.JFrame {
         URL imUrl = getClass().getResource("/icon.png");
         ImageIcon icon = new ImageIcon(imUrl);
         setIconImage(icon.getImage());
+        setResizable(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

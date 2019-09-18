@@ -23,6 +23,7 @@ public class HiJFrame extends javax.swing.JFrame {
         URL imUrl = getClass().getResource("/icon.png");
         icon = new ImageIcon(imUrl);
         setIconImage(icon.getImage());
+        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
