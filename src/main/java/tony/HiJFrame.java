@@ -255,6 +255,8 @@ public class HiJFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "隐写在图片中的文字已提取到文本框中！", "成功 ", 1);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "隐写文字提取失败！\r\n可能你輸入的图片并非本程序生成", "错误 ", 0);
+                Logger.getLogger(HiJFrame.class.getName()).log(Level.SEVERE, "图片->"+rc.getFileLocation()+"提取失败\r\n"+e);
+                e.printStackTrace();
             }
         }
     }//GEN-LAST:event_recBtnActionPerformed
