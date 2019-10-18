@@ -49,11 +49,13 @@ public class StringBinUtil {
             return null;
         }
         int length=str.length()/8;
-        byte[] byteArray = new byte[length];
+        byte[] byteArray = new byte[length+1];
         int byteLength = 0;
-        for (int i = 0; i < str.length() - 1; i++) {
+        for (int i = 0; i <= str.length() - 1; i++) {
             if (i % 8 == 0) {
-                String iter = str.substring(i, i + 8);
+                int end=i+8;
+                int realEnd=end>str.length()-1?str.length()-1:end;
+                String iter = str.substring(i, realEnd);
                 int val = Integer.parseInt(iter, 2);
                 byte b = (byte) val;
                 byteArray[byteLength] = b;
