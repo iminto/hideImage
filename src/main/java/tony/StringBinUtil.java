@@ -6,9 +6,9 @@ public class StringBinUtil {
         if (str == null) {
             return null;
         }
-        byte[] byteArray = new byte[0];
+        byte[] byteArray = new byte[0];////-127 -123 -91
         try {
-            byteArray = str.getBytes("utf8");
+            byteArray = str.getBytes("utf8");//中文转换成byte类型后在Java里是负数
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -28,7 +28,7 @@ public class StringBinUtil {
             }
             builder.append(binString);
         }
-        return builder.toString();
+        return builder.toString();//0110100001100101011011000110110001101111111010001011111010010011111001011000010110100101
     }
 
     public static String intToBinStr(int len){
@@ -48,13 +48,13 @@ public class StringBinUtil {
         if (str == null) {
             return null;
         }
-        int length=str.length()/8;
-        byte[] byteArray = new byte[length+1];
+        int length=str.length()/8;//0110100001100101011011000110110001101111111010001011111010010011111001011000010110100101
+        byte[] byteArray = new byte[length];
         int byteLength = 0;
         for (int i = 0; i <= str.length() - 1; i++) {
             if (i % 8 == 0) {
                 int end=i+8;
-                int realEnd=end>str.length()-1?str.length()-1:end;
+                int realEnd=end>str.length()?str.length():end;
                 String iter = str.substring(i, realEnd);
                 int val = Integer.parseInt(iter, 2);
                 byte b = (byte) val;
