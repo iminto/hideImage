@@ -31,7 +31,7 @@ public class ImageHide {
 
     private String findStr="";
 
-    protected BufferedImage addPng(String fileLocation){
+    public BufferedImage addPng(String fileLocation){
         if(fileLocation==null ||fileLocation.equals("")){
             throw new RuntimeException("文件名不能为空");
         }
