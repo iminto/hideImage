@@ -37,9 +37,14 @@ APP截图：
 
 隐藏文字：组织上已经决定了，今天的垃圾都归你
 
+另：增加了图片简单劣化的功能。
+运行方式：
+```
+ java -cp  target/hide.jar  -Dfile.encoding=UTF-8 tony.ImageTran
+```
 Todo:
  - [x] 修复提取内容上最后一个文字乱码的bug
- - [ ] 待隐写的文本内容有硬回车导致回车前内容被截取的bug
+ - [x] 待隐写的文本内容有硬回车导致回车前内容被截取的bug
  - [ ] 随机位置隐写的功能
 
   [1]: ./static/yaofan.png

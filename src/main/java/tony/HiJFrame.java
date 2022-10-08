@@ -241,6 +241,7 @@ public class HiJFrame extends javax.swing.JFrame {
                 Logger.getLogger(HiJFrame.class.getName()).log(Level.INFO, "图片->"+rc.getFileLocation()+"隐写成功");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "错误 ", 0);
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_hideBtnActionPerformed

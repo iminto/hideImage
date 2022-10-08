@@ -36,6 +36,7 @@ public class ImageHide {
             throw new RuntimeException("文件名不能为空");
         }
         this.fileLocation=fileLocation;
+        this.fileLocation=this.fileLocation.replaceAll("\\\\","/");
         BufferedImage bufferedImage = null;
         if(!ImageUtil.validPng(fileLocation)){
             //JPEG是有损格式,保存JPEG并重新加载后颜色将不会完全相同，GIF比较复杂暂不考虑
